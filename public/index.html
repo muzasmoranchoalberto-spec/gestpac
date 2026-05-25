@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestPAC</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"/>
+  <link rel="stylesheet" href="css/estilo.css"/>
+</head>
+<body>
+
+<!-- CABECERA -->
+<header id="cabecera">
+  <div id="logo">🌾 GestPAC</div>
+  <div id="campana-selector">
+    <label>Campaña:</label>
+    <select id="sel-campana">
+      <option value="2026">2026</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+    </select>
+  </div>
+  <div id="estado-sigpac">⏳ Conectando...</div>
+  <div id="recintos-badge">— recintos</div>
+</header>
+
+<!-- LAYOUT PRINCIPAL -->
+<div id="layout">
+
+  <!-- PANEL IZQUIERDO: Lista de campos -->
+  <aside id="panel-izq">
+    <div id="panel-izq-header">
+      <input type="text" id="buscador" placeholder="🔍 Buscar campo..."/>
+      <button id="btn-nuevo-campo" title="Nuevo campo">＋ Campo</button>
+    </div>
+    <div id="lista-campos"></div>
+  </aside>
+
+  <!-- MAPA -->
+  <div id="mapa-wrapper">
+    <!-- Barra de modos -->
+    <div id="barra-modos">
+      <button class="modo-btn activo" data-modo="ver" title="Ver campos">👁 Ver</button>
+      <button class="modo-btn" data-modo="nuevo" title="Crear nuevo campo dibujando">＋ Nuevo</button>
+      <button class="modo-btn" data-modo="añadir" title="Añadir parcela a campo seleccionado">📌 Añadir parcela</button>
+
+      <div class="modo-separador"></div>
+      <button class="modo-btn" id="btn-capa-sigpac" title="Mostrar capa visual SIGPAC">🗺 Capa SIGPAC</button>
+    </div>
+    <div id="mapa"></div>
+    <div id="instruccion-mapa"></div>
+  </div>
+
+  <!-- PANEL DERECHO: Detalle del campo -->
+  <aside id="panel-der" class="oculto">
+    <div id="panel-der-header">
+      <h2 id="campo-nombre-titulo">—</h2>
+      <button id="btn-cerrar-panel">✕</button>
+    </div>
+    <div id="panel-der-contenido"></div>
+  </aside>
+
+</div>
+
+<!-- MODAL: Nuevo campo / editar campo -->
+<div id="modal-overlay" class="oculto">
+  <div id="modal">
+    <div id="modal-header">
+      <h3 id="modal-titulo">Nuevo campo</h3>
+      <button id="modal-cerrar">✕</button>
+    </div>
+    <div id="modal-cuerpo"></div>
+    <div id="modal-footer">
+      <button id="modal-cancelar" class="btn-secundario">Cancelar</button>
+      <button id="modal-guardar" class="btn-primario">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST de notificaciones -->
+<div id="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+<script src="js/datos.js"></script>
+<script src="js/mapa.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

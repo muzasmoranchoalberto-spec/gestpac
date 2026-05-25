@@ -51,7 +51,7 @@ async function descargarParcela(pr, mu, pol, par) {
     for (const feat of geojson.features) {
       const p = feat.properties;
       const rec = String(p.recinto || p.RECINTO || '').replace(/\D/g, '');
-      const superficie = p.sup_gis || p.SUP_GIS || 0;
+      const superficie = p.dn_surface || p.sup_gis || p.SUP_GIS || p.superficie || p.sup_declarada || p.area || 0;
       const uso = p.uso_sigpac || p.USO_SIGPAC || '';
       if (!rec) continue;
       const clave = `${pr}-${mu}-${pol}-${par}-${rec}`;
